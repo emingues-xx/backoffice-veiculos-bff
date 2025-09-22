@@ -232,6 +232,7 @@ router.use(authenticateToken);
  */
 router.post(
   '/',
+  authenticateToken,
   requireRole(['admin', 'vendedor']),
   validateRequest(createVehicleSchema),
   vehicleController.createVehicle
@@ -284,6 +285,7 @@ router.post(
  */
 router.put(
   '/:id',
+  authenticateToken,
   requireRole(['admin', 'vendedor']),
   validateParams(vehicleIdSchema),
   validateRequest(updateVehicleSchema),
@@ -329,6 +331,7 @@ router.put(
  */
 router.delete(
   '/:id',
+  authenticateToken,
   requireRole(['admin']),
   validateParams(vehicleIdSchema),
   vehicleController.deleteVehicle
@@ -388,6 +391,7 @@ router.delete(
  */
 router.patch(
   '/:id/status',
+  authenticateToken,
   requireRole(['admin', 'vendedor']),
   validateParams(vehicleIdSchema),
   validateRequest(updateStatusSchema),
@@ -423,6 +427,7 @@ router.patch(
  */
 router.get(
   '/dashboard/stats',
+  authenticateToken,
   requireRole(['admin', 'vendedor']),
   vehicleController.getDashboardStats
 );
@@ -463,6 +468,7 @@ router.get(
  */
 router.get(
   '/seller/:vendedorId',
+  authenticateToken,
   requireRole(['admin', 'vendedor']),
   validateParams(Joi.object({ vendedorId: Joi.string().required() })),
   validateQuery(vehicleFiltersSchema),
