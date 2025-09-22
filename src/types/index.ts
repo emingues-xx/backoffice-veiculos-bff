@@ -8,7 +8,7 @@ export interface Vehicle {
   fuel: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
   color: string;
   transmission: 'manual' | 'automatico';
-  category: 'carro' | 'moto' | 'caminhao' | 'onibus';
+  category: 'carro' | 'moto' | 'caminhao' | 'onibus' | 'van';
   status: 'ativo' | 'inativo' | 'vendido';
   description?: string;
   images?: string[];
@@ -26,7 +26,7 @@ export interface CreateVehicleRequest {
   fuel: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
   color: string;
   transmission: 'manual' | 'automatico';
-  category: 'carro' | 'moto' | 'caminhao' | 'onibus';
+  category: 'carro' | 'moto' | 'caminhao' | 'onibus' | 'van';
   description?: string;
   images?: string[];
 }
@@ -89,7 +89,7 @@ export interface JwtPayload {
 }
 
 export interface DashboardStats {
-  totalVeiculos: number;
+  totalVehicles: number;
   veiculosAtivos: number;
   veiculosVendidos: number;
   vendasMes: number;
