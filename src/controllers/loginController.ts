@@ -13,7 +13,7 @@ export const loginController = {
   /**
    * Login do usuário chamando diretamente a API de produção
    */
-  async login(req: Request, res: Response) {
+  async login(req: Request, res: Response): Promise<void> {
     try {
       const { email, password } = req.body;
 
