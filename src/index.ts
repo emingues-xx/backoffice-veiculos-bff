@@ -8,6 +8,7 @@ import { config } from './config';
 import { swaggerSpec } from './config/swagger';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 import veiculoRoutes from './routes/veiculoRoutes';
+import authRoutes from './routes/authRoutes';
 
 const app = express();
 
@@ -103,6 +104,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
 }));
 
 // API routes
+app.use('/api/auth', authRoutes);
 app.use('/api/vehicles', veiculoRoutes);
 
 // Root endpoint
