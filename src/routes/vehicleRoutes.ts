@@ -192,7 +192,7 @@ router.get(
 );
 
 // Protected routes (authentication required)
-// router.use(authenticateToken); // Temporariamente removido para permitir frontend
+router.use(authenticateToken);
 
 /**
  * @swagger
@@ -232,8 +232,7 @@ router.get(
  */
 router.post(
   '/',
-  // authenticateToken, // Temporariamente removido para permitir frontend
-  // requireRole(['admin', 'vendedor']), // Temporariamente removido para permitir frontend
+  requireRole(['admin', 'vendedor']),
   validateRequest(createVehicleSchema),
   vehicleController.createVehicle
 );
@@ -285,8 +284,7 @@ router.post(
  */
 router.put(
   '/:id',
-  // authenticateToken, // Temporariamente removido para permitir frontend
-  // requireRole(['admin', 'vendedor']), // Temporariamente removido para permitir frontend
+  requireRole(['admin', 'vendedor']),
   validateParams(vehicleIdSchema),
   validateRequest(updateVehicleSchema),
   vehicleController.updateVehicle
@@ -331,8 +329,7 @@ router.put(
  */
 router.delete(
   '/:id',
-  // authenticateToken, // Temporariamente removido para permitir frontend
-  // requireRole(['admin']), // Temporariamente removido para permitir frontend
+  requireRole(['admin']),
   validateParams(vehicleIdSchema),
   vehicleController.deleteVehicle
 );
