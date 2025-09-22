@@ -7,7 +7,7 @@ import swaggerUi from 'swagger-ui-express';
 import { config } from './config';
 import { swaggerSpec } from './config/swagger';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
-import veiculoRoutes from './routes/veiculoRoutes';
+import vehicleRoutes from './routes/vehicleRoutes';
 import authRoutes from './routes/authRoutes';
 
 const app = express();
@@ -105,7 +105,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
 
 // API routes
 app.use('/api/auth', authRoutes);
-app.use('/api/vehicles', veiculoRoutes);
+app.use('/api/vehicles', vehicleRoutes);
 
 // Root endpoint
 app.get('/', (req, res) => {

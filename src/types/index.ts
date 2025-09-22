@@ -1,62 +1,62 @@
-export interface Veiculo {
+export interface Vehicle {
   id: string;
-  marca: string;
-  modelo: string;
-  ano: number;
-  preco: number;
-  quilometragem: number;
-  combustivel: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
-  cor: string;
-  cambio: 'manual' | 'automatico';
-  categoria: 'carro' | 'moto' | 'caminhao' | 'onibus';
+  brand: string;
+  model: string;
+  year: number;
+  price: number;
+  mileage: number;
+  fuel: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
+  color: string;
+  transmission: 'manual' | 'automatico';
+  category: 'carro' | 'moto' | 'caminhao' | 'onibus';
   status: 'ativo' | 'inativo' | 'vendido';
-  descricao?: string;
-  imagens?: string[];
-  dataCriacao: string;
-  dataAtualizacao: string;
-  vendedorId: string;
+  description?: string;
+  images?: string[];
+  createdAt: string;
+  updatedAt: string;
+  sellerId: string;
 }
 
-export interface CreateVeiculoRequest {
-  marca: string;
-  modelo: string;
-  ano: number;
-  preco: number;
-  quilometragem: number;
-  combustivel: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
-  cor: string;
-  cambio: 'manual' | 'automatico';
-  categoria: 'carro' | 'moto' | 'caminhao' | 'onibus';
-  descricao?: string;
-  imagens?: string[];
+export interface CreateVehicleRequest {
+  brand: string;
+  model: string;
+  year: number;
+  price: number;
+  mileage: number;
+  fuel: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
+  color: string;
+  transmission: 'manual' | 'automatico';
+  category: 'carro' | 'moto' | 'caminhao' | 'onibus';
+  description?: string;
+  images?: string[];
 }
 
-export interface UpdateVeiculoRequest {
-  marca?: string;
-  modelo?: string;
-  ano?: number;
-  preco?: number;
-  quilometragem?: number;
-  combustivel?: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
-  cor?: string;
-  cambio?: 'manual' | 'automatico';
-  categoria?: 'carro' | 'moto' | 'caminhao' | 'onibus';
+export interface UpdateVehicleRequest {
+  brand?: string;
+  model?: string;
+  year?: number;
+  price?: number;
+  mileage?: number;
+  fuel?: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
+  color?: string;
+  transmission?: 'manual' | 'automatico';
+  category?: 'carro' | 'moto' | 'caminhao' | 'onibus';
   status?: 'ativo' | 'inativo' | 'vendido';
-  descricao?: string;
-  imagens?: string[];
+  description?: string;
+  images?: string[];
 }
 
-export interface VeiculoFilters {
-  marca?: string;
-  modelo?: string;
-  anoMin?: number;
-  anoMax?: number;
-  precoMin?: number;
-  precoMax?: number;
-  combustivel?: string;
-  categoria?: string;
+export interface VehicleFilters {
+  brand?: string;
+  model?: string;
+  yearMin?: number;
+  yearMax?: number;
+  priceMin?: number;
+  priceMax?: number;
+  fuel?: string;
+  category?: string;
   status?: string;
-  vendedorId?: string;
+  sellerId?: string;
   page?: number;
   limit?: number;
   sortBy?: string;

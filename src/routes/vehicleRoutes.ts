@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import Joi from 'joi';
-import { veiculoController } from '../controllers/veiculoController';
+import { vehicleController } from '../controllers/vehicleController';
 import { authenticateToken, requireRole } from '../middleware/auth';
 import { 
   validateRequest, 
@@ -8,13 +8,13 @@ import {
   validateParams 
 } from '../middleware/validation';
 import {
-  createVeiculoSchema,
-  updateVeiculoSchema,
-  veiculoFiltersSchema,
-  veiculoIdSchema,
+  createVehicleSchema,
+  updateVehicleSchema,
+  vehicleFiltersSchema,
+  vehicleIdSchema,
   updateStatusSchema,
   searchSchema
-} from '../validators/veiculoValidators';
+} from '../validators/vehicleValidators';
 
 const router = Router();
 
@@ -115,8 +115,8 @@ const router = Router();
  */
 router.get(
   '/',
-  validateQuery(veiculoFiltersSchema),
-  veiculoController.getVeiculos
+  validateQuery(vehicleFiltersSchema),
+  vehicleController.getVehicles
 );
 
 /**
@@ -152,7 +152,7 @@ router.get(
 router.get(
   '/search',
   validateQuery(searchSchema),
-  veiculoController.searchVeiculos
+  vehicleController.searchVehicles
 );
 
 /**
@@ -187,8 +187,8 @@ router.get(
  */
 router.get(
   '/:id',
-  validateParams(veiculoIdSchema),
-  veiculoController.getVeiculoById
+  validateParams(vehicleIdSchema),
+  vehicleController.getVehicleById
 );
 
 // Protected routes (authentication required)
@@ -233,8 +233,8 @@ router.use(authenticateToken);
 router.post(
   '/',
   requireRole(['admin', 'vendedor']),
-  validateRequest(createVeiculoSchema),
-  veiculoController.createVeiculo
+  validateRequest(createVehicleSchema),
+  vehicleController.createVehicle
 );
 
 /**
@@ -285,9 +285,9 @@ router.post(
 router.put(
   '/:id',
   requireRole(['admin', 'vendedor']),
-  validateParams(veiculoIdSchema),
-  validateRequest(updateVeiculoSchema),
-  veiculoController.updateVeiculo
+  validateParams(vehicleIdSchema),
+  validateRequest(updateVehicleSchema),
+  vehicleController.updateVehicle
 );
 
 /**
@@ -330,8 +330,8 @@ router.put(
 router.delete(
   '/:id',
   requireRole(['admin']),
-  validateParams(veiculoIdSchema),
-  veiculoController.deleteVeiculo
+  validateParams(vehicleIdSchema),
+  vehicleController.deleteVehicle
 );
 
 /**
@@ -389,9 +389,9 @@ router.delete(
 router.patch(
   '/:id/status',
   requireRole(['admin', 'vendedor']),
-  validateParams(veiculoIdSchema),
+  validateParams(vehicleIdSchema),
   validateRequest(updateStatusSchema),
-  veiculoController.updateVeiculoStatus
+  vehicleController.updateVehicleStatus
 );
 
 /**
@@ -424,7 +424,7 @@ router.patch(
 router.get(
   '/dashboard/stats',
   requireRole(['admin', 'vendedor']),
-  veiculoController.getDashboardStats
+  vehicleController.getDashboardStats
 );
 
 /**
@@ -465,8 +465,8 @@ router.get(
   '/seller/:vendedorId',
   requireRole(['admin', 'vendedor']),
   validateParams(Joi.object({ vendedorId: Joi.string().required() })),
-  validateQuery(veiculoFiltersSchema),
-  veiculoController.getVeiculosByVendedor
+  validateQuery(vehicleFiltersSchema),
+  vehicleController.getVehiclesBySeller
 );
 
 export default router;
