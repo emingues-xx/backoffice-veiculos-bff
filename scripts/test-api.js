@@ -20,14 +20,20 @@ async function testAPI() {
     console.log('✅ Health Check:', healthResponse.data.message);
     console.log('');
 
+    // Test documentation
+    console.log('2. Testando Documentação...');
+    const docsResponse = await axios.get(`${API_BASE_URL}/docs`);
+    console.log('✅ Documentação disponível em:', `${API_BASE_URL}/docs`);
+    console.log('');
+
     // Test get veiculos (public endpoint)
-    console.log('2. Testando GET /api/veiculos (público)...');
+    console.log('3. Testando GET /api/veiculos (público)...');
     const veiculosResponse = await axios.get(`${API_BASE_URL}/api/veiculos`);
     console.log('✅ Veículos encontrados:', veiculosResponse.data.data?.pagination?.total || 0);
     console.log('');
 
     // Test create veiculo (protected endpoint)
-    console.log('3. Testando POST /api/veiculos (protegido)...');
+    console.log('4. Testando POST /api/veiculos (protegido)...');
     const novoVeiculo = {
       marca: 'Toyota',
       modelo: 'Corolla',
@@ -46,7 +52,7 @@ async function testAPI() {
     console.log('');
 
     // Test dashboard stats
-    console.log('4. Testando GET /api/veiculos/dashboard/stats...');
+    console.log('5. Testando GET /api/veiculos/dashboard/stats...');
     const statsResponse = await axios.get(`${API_BASE_URL}/api/veiculos/dashboard/stats`, { headers });
     console.log('✅ Estatísticas do dashboard:', {
       totalVeiculos: statsResponse.data.data?.totalVeiculos,
@@ -55,7 +61,7 @@ async function testAPI() {
     console.log('');
 
     // Test search
-    console.log('5. Testando GET /api/veiculos/search...');
+    console.log('6. Testando GET /api/veiculos/search...');
     const searchResponse = await axios.get(`${API_BASE_URL}/api/veiculos/search?q=Toyota`);
     console.log('✅ Busca por "Toyota":', searchResponse.data.data?.pagination?.total || 0, 'resultados');
     console.log('');

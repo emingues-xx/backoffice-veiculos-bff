@@ -89,6 +89,17 @@ npm run lint:fix
 
 ## 📚 API Endpoints
 
+### 📖 Documentação Interativa
+
+Acesse a documentação completa da API em: **http://localhost:3002/docs**
+
+A documentação Swagger inclui:
+- ✅ **Todos os endpoints** com exemplos
+- ✅ **Schemas de dados** completos
+- ✅ **Autenticação JWT** configurada
+- ✅ **Testes interativos** dos endpoints
+- ✅ **Códigos de resposta** e erros
+
 ### Veículos
 
 | Método | Endpoint | Descrição | Autenticação |
@@ -103,11 +114,12 @@ npm run lint:fix
 | GET | `/api/veiculos/dashboard/stats` | Estatísticas do dashboard | ✅ (Admin/Vendedor) |
 | GET | `/api/veiculos/vendedor/:vendedorId` | Veículos por vendedor | ✅ (Admin/Vendedor) |
 
-### Health Check
+### Sistema
 
 | Método | Endpoint | Descrição |
 |--------|----------|-----------|
 | GET | `/health` | Status da aplicação |
+| GET | `/docs` | Documentação da API |
 
 ## 🔐 Autenticação
 
