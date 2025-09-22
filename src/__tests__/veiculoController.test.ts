@@ -61,7 +61,7 @@ app.get('/health', (req, res) => {
 });
 
 // API routes
-app.use('/api/veiculos', veiculoRoutes);
+app.use('/api/vehicles', veiculoRoutes);
 
 // Error handling middleware
 app.use(notFoundHandler);
@@ -70,10 +70,10 @@ app.use(errorHandler);
 describe('VeiculoController', () => {
   const mockToken = 'test-token';
 
-  describe('GET /api/veiculos', () => {
+  describe('GET /api/vehicles', () => {
     it('should return list of veiculos without authentication', async () => {
       const response = await request(app)
-        .get('/api/veiculos')
+        .get('/api/vehicles')
         .expect(200);
 
       expect(response.body.success).toBe(true);
@@ -82,14 +82,14 @@ describe('VeiculoController', () => {
 
     it('should accept query parameters', async () => {
       const response = await request(app)
-        .get('/api/veiculos?marca=Toyota&page=1&limit=5')
+        .get('/api/vehicles?marca=Toyota&page=1&limit=5')
         .expect(200);
 
       expect(response.body.success).toBe(true);
     });
   });
 
-  describe('POST /api/veiculos', () => {
+  describe('POST /api/vehicles', () => {
     it('should require authentication', async () => {
       const veiculoData = {
         marca: 'Toyota',
@@ -104,7 +104,7 @@ describe('VeiculoController', () => {
       };
 
       await request(app)
-        .post('/api/veiculos')
+        .post('/api/vehicles')
         .send(veiculoData)
         .expect(401);
     });
@@ -123,7 +123,7 @@ describe('VeiculoController', () => {
       };
 
       const response = await request(app)
-        .post('/api/veiculos')
+        .post('/api/vehicles')
         .set('Authorization', `Bearer ${mockToken}`)
         .send(veiculoData)
         .expect(201);

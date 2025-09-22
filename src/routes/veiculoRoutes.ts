@@ -20,7 +20,7 @@ const router = Router();
 
 /**
  * @swagger
- * /api/veiculos:
+ * /api/vehicles:
  *   get:
  *     summary: Listar veículos
  *     description: Retorna uma lista paginada de veículos com filtros opcionais
@@ -121,7 +121,7 @@ router.get(
 
 /**
  * @swagger
- * /api/veiculos/search:
+ * /api/vehicles/search:
  *   get:
  *     summary: Buscar veículos
  *     description: Busca veículos por texto livre
@@ -157,7 +157,7 @@ router.get(
 
 /**
  * @swagger
- * /api/veiculos/{id}:
+ * /api/vehicles/{id}:
  *   get:
  *     summary: Obter veículo por ID
  *     description: Retorna um veículo específico pelo ID
@@ -196,7 +196,7 @@ router.use(authenticateToken);
 
 /**
  * @swagger
- * /api/veiculos:
+ * /api/vehicles:
  *   post:
  *     summary: Criar veículo
  *     description: Cria um novo veículo (requer autenticação)
@@ -239,7 +239,7 @@ router.post(
 
 /**
  * @swagger
- * /api/veiculos/{id}:
+ * /api/vehicles/{id}:
  *   put:
  *     summary: Atualizar veículo
  *     description: Atualiza um veículo existente (requer autenticação)
@@ -292,7 +292,7 @@ router.put(
 
 /**
  * @swagger
- * /api/veiculos/{id}:
+ * /api/vehicles/{id}:
  *   delete:
  *     summary: Remover veículo
  *     description: Remove um veículo (requer autenticação de admin)
@@ -396,7 +396,7 @@ router.patch(
 
 /**
  * @swagger
- * /api/veiculos/dashboard/stats:
+ * /api/vehicles/dashboard/stats:
  *   get:
  *     summary: Estatísticas do dashboard
  *     description: Retorna estatísticas para o dashboard (requer autenticação)
@@ -429,7 +429,7 @@ router.get(
 
 /**
  * @swagger
- * /api/veiculos/vendedor/{vendedorId}:
+ * /api/vehicles/seller/{vendedorId}:
  *   get:
  *     summary: Veículos por vendedor
  *     description: Retorna veículos de um vendedor específico (requer autenticação)
@@ -462,7 +462,7 @@ router.get(
  *         description: Permissão insuficiente
  */
 router.get(
-  '/vendedor/:vendedorId',
+  '/seller/:vendedorId',
   requireRole(['admin', 'vendedor']),
   validateParams(Joi.object({ vendedorId: Joi.string().required() })),
   validateQuery(veiculoFiltersSchema),

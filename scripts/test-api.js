@@ -27,13 +27,13 @@ async function testAPI() {
     console.log('');
 
     // Test get veiculos (public endpoint)
-    console.log('3. Testando GET /api/veiculos (público)...');
-    const veiculosResponse = await axios.get(`${API_BASE_URL}/api/veiculos`);
+    console.log('3. Testando GET /api/vehicles (público)...');
+    const veiculosResponse = await axios.get(`${API_BASE_URL}/api/vehicles`);
     console.log('✅ Veículos encontrados:', veiculosResponse.data.data?.pagination?.total || 0);
     console.log('');
 
     // Test create veiculo (protected endpoint)
-    console.log('4. Testando POST /api/veiculos (protegido)...');
+    console.log('4. Testando POST /api/vehicles (protegido)...');
     const novoVeiculo = {
       marca: 'Toyota',
       modelo: 'Corolla',
@@ -47,13 +47,13 @@ async function testAPI() {
       descricao: 'Veículo de teste criado via script'
     };
 
-    const createResponse = await axios.post(`${API_BASE_URL}/api/veiculos`, novoVeiculo, { headers });
+    const createResponse = await axios.post(`${API_BASE_URL}/api/vehicles`, novoVeiculo, { headers });
     console.log('✅ Veículo criado:', createResponse.data.data?.id);
     console.log('');
 
     // Test dashboard stats
-    console.log('5. Testando GET /api/veiculos/dashboard/stats...');
-    const statsResponse = await axios.get(`${API_BASE_URL}/api/veiculos/dashboard/stats`, { headers });
+    console.log('5. Testando GET /api/vehicles/dashboard/stats...');
+    const statsResponse = await axios.get(`${API_BASE_URL}/api/vehicles/dashboard/stats`, { headers });
     console.log('✅ Estatísticas do dashboard:', {
       totalVeiculos: statsResponse.data.data?.totalVeiculos,
       veiculosAtivos: statsResponse.data.data?.veiculosAtivos
@@ -61,8 +61,8 @@ async function testAPI() {
     console.log('');
 
     // Test search
-    console.log('6. Testando GET /api/veiculos/search...');
-    const searchResponse = await axios.get(`${API_BASE_URL}/api/veiculos/search?q=Toyota`);
+    console.log('6. Testando GET /api/vehicles/search...');
+    const searchResponse = await axios.get(`${API_BASE_URL}/api/vehicles/search?q=Toyota`);
     console.log('✅ Busca por "Toyota":', searchResponse.data.data?.pagination?.total || 0, 'resultados');
     console.log('');
 

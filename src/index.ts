@@ -103,7 +103,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
 }));
 
 // API routes
-app.use('/api/veiculos', veiculoRoutes);
+app.use('/api/vehicles', veiculoRoutes);
 
 // Root endpoint
 app.get('/', (req, res) => {

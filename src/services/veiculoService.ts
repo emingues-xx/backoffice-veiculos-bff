@@ -40,7 +40,7 @@ export class VeiculoService {
   }
 
   async getVeiculosByVendedor(vendedorId: string, filters: Omit<VeiculoFilters, 'vendedorId'> = {}): Promise<PaginatedResponse<Veiculo>> {
-    return apiClient.get<PaginatedResponse<Veiculo>>(`${this.basePath}/vendedor/${vendedorId}`, filters);
+    return apiClient.get<PaginatedResponse<Veiculo>>(`${this.basePath}/seller/${vendedorId}`, filters);
   }
 
   async searchVeiculos(query: string, filters: Omit<VeiculoFilters, 'search'> = {}): Promise<PaginatedResponse<Veiculo>> {
