@@ -5,8 +5,8 @@ import { VeiculoFilters, CreateVeiculoRequest, UpdateVeiculoRequest } from '../t
 import { AuthenticatedRequest } from '../middleware/auth';
 import { config } from '../config';
 
-// Use mock service in development and test when API is not available
-const service = (config.nodeEnv === 'development' || config.nodeEnv === 'test') ? mockVeiculoService : veiculoService;
+// Use mock service only in test environment
+const service = config.nodeEnv === 'test' ? mockVeiculoService : veiculoService;
 
 export class VeiculoController {
   async getVeiculos(req: Request, res: Response, next: NextFunction): Promise<void> {

@@ -9,7 +9,7 @@ import {
 } from '../types';
 
 export class VeiculoService {
-  private readonly basePath = '/api/veiculos';
+  private readonly basePath = '/api/vehicles';
 
   async getVeiculos(filters: VeiculoFilters = {}): Promise<PaginatedResponse<Veiculo>> {
     return apiClient.get<PaginatedResponse<Veiculo>>(this.basePath, filters);
