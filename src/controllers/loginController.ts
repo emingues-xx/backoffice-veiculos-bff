@@ -18,10 +18,11 @@ export const loginController = {
       const { email, password } = req.body;
 
       if (!email || !password) {
-        return res.status(400).json({
+        res.status(400).json({
           success: false,
           error: 'Email e senha são obrigatórios'
         });
+        return;
       }
 
       // Chamar diretamente a API de produção
@@ -41,11 +42,12 @@ export const loginController = {
       console.error('Erro no login:', error.message);
       
       if (error.response) {
-        return res.status(error.response.status).json({
+        res.status(error.response.status).json({
           success: false,
           error: error.response.data?.error || 'Erro no login',
           message: error.response.data?.message
         });
+        return;
       }
 
       res.status(500).json({
