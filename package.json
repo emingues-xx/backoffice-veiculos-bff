@@ -14,8 +14,7 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "test:api": "node scripts/test-api.js",
-    "deploy:railway": "node scripts/deploy-railway.js",
-    "postinstall": "npm run build"
+    "deploy:railway": "node scripts/deploy-railway.js"
   },
   "keywords": [
     "ecommerce",

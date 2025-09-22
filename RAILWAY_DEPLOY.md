@@ -95,7 +95,7 @@ O Railway automaticamente detecta o health check em `/health` configurado no `ra
 ### Build e Start
 
 O Railway usa os scripts do `package.json`:
-- **Build**: `npm run build` (executado automaticamente no `postinstall`)
+- **Build**: `npm run build` (executado automaticamente pelo Railway)
 - **Start**: `npm start`
 
 ### Logs
