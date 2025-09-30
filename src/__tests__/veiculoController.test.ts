@@ -82,7 +82,7 @@ describe('VeiculoController', () => {
 
     it('should accept query parameters', async () => {
       const response = await request(app)
-        .get('/api/vehicles?marca=Toyota&page=1&limit=5')
+        .get('/api/vehicles?brand=Toyota&page=1&limit=5')
         .expect(200);
 
       expect(response.body.success).toBe(true);
@@ -92,15 +92,17 @@ describe('VeiculoController', () => {
   describe('POST /api/vehicles', () => {
     it('should require authentication', async () => {
       const veiculoData = {
-        marca: 'Toyota',
-        modelo: 'Corolla',
-        ano: 2022,
-        preco: 85000,
-        quilometragem: 0,
-        combustivel: 'flex',
-        cor: 'Branco',
-        cambio: 'automatico',
-        categoria: 'carro'
+        brand: 'Toyota',
+        model: 'Corolla',
+        year: 2022,
+        price: 85000,
+        mileage: 0,
+        fuel: 'flex',
+        color: 'Branco',
+        transmission: 'automatico',
+        category: 'carro',
+        description: 'Test vehicle',
+        images: ['https://example.com/image.jpg']
       };
 
       await request(app)
@@ -111,15 +113,17 @@ describe('VeiculoController', () => {
 
     it('should create veiculo with valid token', async () => {
       const veiculoData = {
-        marca: 'Toyota',
-        modelo: 'Corolla',
-        ano: 2022,
-        preco: 85000,
-        quilometragem: 0,
-        combustivel: 'flex',
-        cor: 'Branco',
-        cambio: 'automatico',
-        categoria: 'carro'
+        brand: 'Toyota',
+        model: 'Corolla',
+        year: 2022,
+        price: 85000,
+        mileage: 0,
+        fuel: 'flex',
+        color: 'Branco',
+        transmission: 'automatico',
+        category: 'carro',
+        description: 'Test vehicle',
+        images: ['https://example.com/image.jpg']
       };
 
       const response = await request(app)
