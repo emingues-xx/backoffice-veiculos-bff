@@ -4,6 +4,7 @@ import { mockVehicleService } from '../services/mockVehicleService';
 import { VehicleFilters, CreateVehicleRequest, UpdateVehicleRequest } from '../types';
 import { AuthenticatedRequest } from '../middleware/auth';
 import { config } from '../config';
+import { apiClient } from '../services/apiClient';
 
 // Use mock service only in test environment
 const service = config.nodeEnv === 'test' ? mockVehicleService : vehicleService;
@@ -49,6 +50,13 @@ export class VehicleController {
   async createVehicle(req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> {
     try {
       const vehicleData: CreateVehicleRequest = req.body;
+      
+      // Configure authentication token for API calls
+      const authHeader = req.headers['authorization'];
+      if (authHeader) {
+        apiClient.setAuthToken(authHeader.split(' ')[1]);
+      }
+      
       const vehicle = await service.createVehicle(vehicleData);
       
       res.status(201).json({

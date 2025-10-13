@@ -14,7 +14,7 @@ export const config = {
   },
   
   jwt: {
-    secret: process.env.JWT_SECRET || (isProduction ? '63f3ad853e32818c80e7c4f9374d70ac3370a166c7bc8b64bebd67c690e55b46' : 'your-jwt-secret-key'),
+    secret: process.env.JWT_SECRET || '63f3ad853e32818c80e7c4f9374d70ac3370a166c7bc8b64bebd67c690e55b46',
     expiresIn: process.env.JWT_EXPIRES_IN || '24h',
   },
   
