@@ -1,60 +1,106 @@
 export interface Vehicle {
   id: string;
   brand: string;
-  model: string;
+  vehicleModel: string;
   year: number;
   price: number;
   mileage: number;
-  fuel: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
+  fuelType: 'gasoline' | 'ethanol' | 'diesel' | 'electric' | 'hybrid';
   color: string;
-  transmission: 'manual' | 'automatico';
-  category: 'carro' | 'moto' | 'caminhao' | 'onibus' | 'van';
-  status: 'ativo' | 'inativo' | 'vendido';
-  description?: string;
-  images?: string[];
+  transmission: 'manual' | 'automatic';
+  doors?: number;
+  category: 'car' | 'motorcycle' | 'truck' | 'van';
+  condition?: 'new' | 'used';
+  status: 'active' | 'inactive' | 'sold';
+  description: string;
+  images: string[];
+  features?: string[];
+  location?: {
+    city: string;
+    state: string;
+    zipCode: string;
+  };
+  seller?: {
+    id: string;
+    name: string;
+    phone: string;
+    email: string;
+  };
+  isFeatured?: boolean;
+  views?: number;
   createdAt: string;
   updatedAt: string;
-  sellerId: string;
 }
 
 export interface CreateVehicleRequest {
   brand: string;
-  model: string;
+  vehicleModel: string;
   year: number;
   price: number;
   mileage: number;
-  fuel: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
+  fuelType: 'gasoline' | 'ethanol' | 'diesel' | 'electric' | 'hybrid';
   color: string;
-  transmission: 'manual' | 'automatico';
-  category: 'carro' | 'moto' | 'caminhao' | 'onibus' | 'van';
-  description?: string;
-  images?: string[];
+  transmission: 'manual' | 'automatic';
+  doors: number;
+  category: 'car' | 'motorcycle' | 'truck' | 'van';
+  condition: 'new' | 'used';
+  description: string;
+  images: string[];
+  features?: string[];
+  location: {
+    city: string;
+    state: string;
+    zipCode: string;
+  };
+  seller: {
+    id: string;
+    name: string;
+    phone: string;
+    email: string;
+  };
+  isFeatured?: boolean;
 }
 
 export interface UpdateVehicleRequest {
   brand?: string;
-  model?: string;
+  vehicleModel?: string;
   year?: number;
   price?: number;
   mileage?: number;
-  fuel?: 'gasolina' | 'etanol' | 'flex' | 'diesel' | 'eletrico' | 'hibrido';
+  fuelType?: 'gasoline' | 'ethanol' | 'diesel' | 'electric' | 'hybrid';
   color?: string;
-  transmission?: 'manual' | 'automatico';
-  category?: 'carro' | 'moto' | 'caminhao' | 'onibus';
-  status?: 'ativo' | 'inativo' | 'vendido';
+  transmission?: 'manual' | 'automatic';
+  doors?: number;
+  category?: 'car' | 'motorcycle' | 'truck' | 'van';
+  condition?: 'new' | 'used';
+  status?: 'active' | 'inactive' | 'sold';
   description?: string;
   images?: string[];
+  features?: string[];
+  location?: {
+    city: string;
+    state: string;
+    zipCode: string;
+  };
+  seller?: {
+    id: string;
+    name: string;
+    phone: string;
+    email: string;
+  };
+  isFeatured?: boolean;
 }
 
 export interface VehicleFilters {
   brand?: string;
-  model?: string;
+  vehicleModel?: string;
   yearMin?: number;
   yearMax?: number;
   priceMin?: number;
   priceMax?: number;
-  fuel?: string;
+  fuelType?: string;
   category?: string;
+  condition?: string;
   status?: string;
   sellerId?: string;
   page?: number;

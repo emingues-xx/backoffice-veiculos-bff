@@ -95,7 +95,7 @@ export class VehicleController {
     try {
       const { id } = req.params;
       const { status } = req.body;
-      const vehicle = await service.updateVehicleStatus(id, status);
+      const vehicle = await service.updateVehicleStatus(id, status as 'active' | 'inactive' | 'sold');
       
       res.json({
         success: true,

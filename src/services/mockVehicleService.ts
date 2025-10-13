@@ -12,362 +12,586 @@ export class MockVehicleService {
     {
       id: '1',
       brand: 'Toyota',
-      model: 'Corolla',
+      vehicleModel: 'Corolla',
       year: 2022,
       price: 85000,
       mileage: 0,
-      fuel: 'flex',
+      fuelType: 'gasoline',
       color: 'Branco',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
-      description: 'Veículo seminovo em excelente estado',
-      images: ['https://example.com/corolla1.jpg'],
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
+      description: 'Veículo seminovo em excelente estado, único dono, revisões em dia. Equipado com ar condicionado, direção hidráulica, vidros elétricos e trava elétrica.',
+      images: ['https://example.com/corolla1.jpg', 'https://example.com/corolla2.jpg'],
+      features: ['Ar condicionado', 'Direção hidráulica', 'Vidros elétricos', 'Trava elétrica', 'Airbag', 'ABS'],
+      location: {
+        city: 'São Paulo',
+        state: 'SP',
+        zipCode: '01234-567'
+      },
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Toyota',
+        phone: '(11) 99999-9999',
+        email: 'vendas@toyota.com'
+      },
+      isFeatured: false,
+      views: 0,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      updatedAt: new Date().toISOString()
     },
     {
       id: '2',
       brand: 'Honda',
-      model: 'Civic',
+      vehicleModel: 'Civic',
       year: 2021,
       price: 75000,
       mileage: 15000,
-      fuel: 'flex',
+      fuelType: 'gasoline',
       color: 'Prata',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
-      description: 'Civic com baixa quilometragem',
-      images: ['https://example.com/civic1.jpg'],
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
+      description: 'Civic com baixa quilometragem, bem conservado, único dono. Equipado com ar condicionado, direção elétrica, vidros elétricos e sistema de som.',
+      images: ['https://example.com/civic1.jpg', 'https://example.com/civic2.jpg'],
+      features: ['Ar condicionado', 'Direção elétrica', 'Vidros elétricos', 'Sistema de som', 'Airbag', 'ABS'],
+      location: {
+        city: 'Rio de Janeiro',
+        state: 'RJ',
+        zipCode: '20000-000'
+      },
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Honda',
+        phone: '(21) 99999-9999',
+        email: 'vendas@honda.com'
+      },
+      isFeatured: true,
+      views: 15,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      updatedAt: new Date().toISOString()
     },
     {
       id: '3',
       brand: 'Volkswagen',
-      model: 'Golf',
+      vehicleModel: 'Golf',
       year: 2020,
       price: 65000,
       mileage: 25000,
-      fuel: 'gasolina',
+      fuelType: 'gasoline',
       color: 'Azul',
       transmission: 'manual',
-      category: 'carro',
-      status: 'vendido',
-      description: 'Golf bem conservado',
-      images: ['https://example.com/golf1.jpg'],
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'sold',
+      description: 'Golf bem conservado, revisões em dia, único dono. Equipado com ar condicionado, direção hidráulica e sistema de som.',
+      images: ['https://example.com/golf1.jpg', 'https://example.com/golf2.jpg'],
+      features: ['Ar condicionado', 'Direção hidráulica', 'Sistema de som', 'Airbag', 'ABS'],
+      location: {
+        city: 'Belo Horizonte',
+        state: 'MG',
+        zipCode: '30000-000'
+      },
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Volkswagen',
+        phone: '(31) 99999-9999',
+        email: 'vendas@volkswagen.com'
+      },
+      isFeatured: false,
+      views: 8,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      updatedAt: new Date().toISOString()
     },
     {
       id: '4',
       brand: 'Ford',
-      model: 'Focus',
+      vehicleModel: 'Focus',
       year: 2019,
       price: 55000,
       mileage: 40000,
-      fuel: 'flex',
+      fuelType: 'gasoline',
       color: 'Preto',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
-      description: 'Focus com histórico de manutenção completo',
-      images: ['https://example.com/focus1.jpg'],
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
+      description: 'Focus com histórico de manutenção completo, bem conservado. Equipado com ar condicionado, direção elétrica e sistema de som.',
+      images: ['https://example.com/focus1.jpg', 'https://example.com/focus2.jpg'],
+      features: ['Ar condicionado', 'Direção elétrica', 'Sistema de som', 'Airbag', 'ABS'],
+      location: {
+        city: 'Salvador',
+        state: 'BA',
+        zipCode: '40000-000'
+      },
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Ford',
+        phone: '(71) 99999-9999',
+        email: 'vendas@ford.com'
+      },
+      isFeatured: false,
+      views: 12,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      updatedAt: new Date().toISOString()
     },
     {
       id: '5',
       brand: 'Chevrolet',
-      model: 'Onix',
+      vehicleModel: 'Onix',
       year: 2023,
       price: 72000,
       mileage: 5000,
-      fuel: 'flex',
+      fuelType: 'gasoline',
       color: 'Vermelho',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
-      description: 'Onix zero quilômetro, único dono',
-      images: ['https://example.com/onix1.jpg'],
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'new',
+      status: 'active',
+      description: 'Onix zero quilômetro, único dono, garantia de fábrica. Equipado com ar condicionado, direção elétrica, vidros elétricos e sistema de som.',
+      images: ['https://example.com/onix1.jpg', 'https://example.com/onix2.jpg'],
+      features: ['Ar condicionado', 'Direção elétrica', 'Vidros elétricos', 'Sistema de som', 'Airbag', 'ABS', 'Controle de estabilidade'],
+      location: {
+        city: 'Brasília',
+        state: 'DF',
+        zipCode: '70000-000'
+      },
+      seller: {
+        id: '68d17845a08df9f982e3397b',
+        name: 'Concessionária Chevrolet',
+        phone: '(61) 99999-9999',
+        email: 'vendas@chevrolet.com'
+      },
+      isFeatured: true,
+      views: 25,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397b'
+      updatedAt: new Date().toISOString()
     },
     {
       id: '6',
       brand: 'Fiat',
-      model: 'Argo',
+      vehicleModel: 'Argo',
       year: 2021,
       price: 65000,
       mileage: 20000,
-      fuel: 'flex',
+      fuelType: 'gasoline',
       color: 'Branco',
       transmission: 'manual',
-      category: 'carro',
-      status: 'ativo',
-      description: 'Argo com poucos quilômetros rodados',
-      images: ['https://example.com/argo1.jpg'],
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
+      description: 'Argo com poucos quilômetros rodados, bem conservado. Equipado com ar condicionado, direção hidráulica e sistema de som.',
+      images: ['https://example.com/argo1.jpg', 'https://example.com/argo2.jpg'],
+      features: ['Ar condicionado', 'Direção hidráulica', 'Sistema de som', 'Airbag', 'ABS'],
+      location: {
+        city: 'Curitiba',
+        state: 'PR',
+        zipCode: '80000-000'
+      },
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Fiat',
+        phone: '(41) 99999-9999',
+        email: 'vendas@fiat.com'
+      },
+      isFeatured: false,
+      views: 7,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      updatedAt: new Date().toISOString()
     },
     {
       id: '7',
       brand: 'Hyundai',
-      model: 'HB20',
+      vehicleModel: 'HB20',
       year: 2022,
       price: 78000,
       mileage: 10000,
-      fuel: 'flex',
+      fuelType: 'gasoline',
       color: 'Prata',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
-      description: 'HB20 seminovo, bem conservado',
-      images: ['https://example.com/hb20_1.jpg'],
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
+      description: 'HB20 seminovo, bem conservado, único dono. Equipado com ar condicionado, direção elétrica e sistema de som.',
+      images: ['https://example.com/hb20_1.jpg', 'https://example.com/hb20_2.jpg'],
+      features: ['Ar condicionado', 'Direção elétrica', 'Sistema de som', 'Airbag', 'ABS'],
+      location: {
+        city: 'Porto Alegre',
+        state: 'RS',
+        zipCode: '90000-000'
+      },
+      seller: {
+        id: '68d17845a08df9f982e3397b',
+        name: 'Concessionária Hyundai',
+        phone: '(51) 99999-9999',
+        email: 'vendas@hyundai.com'
+      },
+      isFeatured: false,
+      views: 9,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397b'
+      updatedAt: new Date().toISOString()
     },
     {
       id: '8',
       brand: 'Nissan',
-      model: 'Versa',
+      vehicleModel: 'Versa',
       year: 2020,
       price: 62000,
       mileage: 35000,
-      fuel: 'flex',
+      fuelType: 'gasoline',
       color: 'Cinza',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
       description: 'Versa com ar condicionado e direção hidráulica',
-      images: ['https://example.com/versa1.jpg'],
+      images: ['https://example.com/versa1.jpg', 'https://example.com/versa2.jpg'],
+      features: ['Ar condicionado', 'Direção hidráulica', 'Sistema de som', 'Airbag', 'ABS'],
+      location: {
+        city: 'Recife',
+        state: 'PE',
+        zipCode: '50000-000'
+      },
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Teste',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '9',
       brand: 'Renault',
-      model: 'Logan',
+      vehicleModel: 'Logan',
       year: 2019,
       price: 48000,
       mileage: 45000,
-      fuel: 'flex',
+      fuelType: 'gasoline',
       color: 'Branco',
       transmission: 'manual',
-      category: 'carro',
-      status: 'ativo',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
       description: 'Logan econômico e confiável',
       images: ['https://example.com/logan1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397b'
+      seller: {
+        id: '68d17845a08df9f982e3397b',
+        name: 'Concessionária Teste 2',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste2.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '10',
       brand: 'Peugeot',
-      model: '208',
+      vehicleModel: '208',
       year: 2021,
       price: 69000,
       mileage: 18000,
-      fuel: 'flex',
+      fuelType: 'gasoline',
       color: 'Azul',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
       description: '208 com design moderno e tecnologia',
       images: ['https://example.com/208_1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Teste',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '11',
       brand: 'Honda',
-      model: 'CB 600F',
+      vehicleModel: 'CB 600F',
       year: 2020,
       price: 35000,
       mileage: 8000,
-      fuel: 'gasolina',
+      fuelType: 'gasoline',
       color: 'Vermelho',
       transmission: 'manual',
-      category: 'moto',
-      status: 'ativo',
+      doors: 0,
+      category: 'motorcycle',
+      condition: 'used',
+      status: 'active',
       description: 'Moto esportiva em excelente estado',
       images: ['https://example.com/cb600f_1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397b'
+      seller: {
+        id: '68d17845a08df9f982e3397b',
+        name: 'Concessionária Teste 2',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste2.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '12',
       brand: 'Yamaha',
-      model: 'MT-07',
+      vehicleModel: 'MT-07',
       year: 2022,
       price: 42000,
       mileage: 3000,
-      fuel: 'gasolina',
+      fuelType: 'gasoline',
       color: 'Preto',
       transmission: 'manual',
-      category: 'moto',
-      status: 'ativo',
+      doors: 0,
+      category: 'motorcycle',
+      condition: 'used',
+      status: 'active',
       description: 'MT-07 seminova, poucos quilômetros',
       images: ['https://example.com/mt07_1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Teste',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '13',
       brand: 'Kawasaki',
-      model: 'Ninja 650',
+      vehicleModel: 'Ninja 650',
       year: 2021,
       price: 45000,
       mileage: 5000,
-      fuel: 'gasolina',
+      fuelType: 'gasoline',
       color: 'Verde',
       transmission: 'manual',
-      category: 'moto',
-      status: 'ativo',
+      doors: 0,
+      category: 'motorcycle',
+      condition: 'used',
+      status: 'active',
       description: 'Ninja 650 com visual esportivo',
       images: ['https://example.com/ninja650_1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397b'
+      seller: {
+        id: '68d17845a08df9f982e3397b',
+        name: 'Concessionária Teste 2',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste2.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '14',
       brand: 'Volkswagen',
-      model: 'Delivery',
+      vehicleModel: 'Delivery',
       year: 2019,
       price: 85000,
       mileage: 60000,
-      fuel: 'diesel',
+      fuelType: 'diesel',
       color: 'Branco',
       transmission: 'manual',
-      category: 'caminhao',
-      status: 'ativo',
+      doors: 2,
+      category: 'truck',
+      condition: 'used',
+      status: 'active',
       description: 'Caminhão para carga, bem conservado',
       images: ['https://example.com/delivery1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Teste',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '15',
       brand: 'Mercedes-Benz',
-      model: 'Sprinter',
+      vehicleModel: 'Sprinter',
       year: 2020,
       price: 120000,
       mileage: 40000,
-      fuel: 'diesel',
+      fuelType: 'diesel',
       color: 'Branco',
       transmission: 'manual',
       category: 'van',
-      status: 'ativo',
+      status: 'active',
       description: 'Van Mercedes para transporte de passageiros',
       images: ['https://example.com/sprinter1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397b'
+      seller: {
+        id: '68d17845a08df9f982e3397b',
+        name: 'Concessionária Teste 2',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste2.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '16',
       brand: 'Toyota',
-      model: 'Hilux',
+      vehicleModel: 'Hilux',
       year: 2022,
       price: 180000,
       mileage: 15000,
-      fuel: 'diesel',
+      fuelType: 'diesel',
       color: 'Prata',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
       description: 'Hilux 4x4, ideal para trabalho e lazer',
       images: ['https://example.com/hilux1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Teste',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '17',
       brand: 'Ford',
-      model: 'Ranger',
+      vehicleModel: 'Ranger',
       year: 2021,
       price: 160000,
       mileage: 20000,
-      fuel: 'diesel',
+      fuelType: 'diesel',
       color: 'Azul',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
       description: 'Ranger com cabine dupla e 4x4',
       images: ['https://example.com/ranger1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397b'
+      seller: {
+        id: '68d17845a08df9f982e3397b',
+        name: 'Concessionária Teste 2',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste2.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '18',
       brand: 'Chevrolet',
-      model: 'S10',
+      vehicleModel: 'S10',
       year: 2020,
       price: 140000,
       mileage: 30000,
-      fuel: 'diesel',
+      fuelType: 'diesel',
       color: 'Preto',
       transmission: 'manual',
-      category: 'carro',
-      status: 'ativo',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
       description: 'S10 robusta e confiável',
       images: ['https://example.com/s10_1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Teste',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '19',
       brand: 'Volkswagen',
-      model: 'Amarok',
+      vehicleModel: 'Amarok',
       year: 2023,
       price: 200000,
       mileage: 8000,
-      fuel: 'diesel',
+      fuelType: 'diesel',
       color: 'Branco',
-      transmission: 'automatico',
-      category: 'carro',
-      status: 'ativo',
+      transmission: 'automatic',
+      doors: 4,
+      category: 'car',
+      condition: 'used',
+      status: 'active',
       description: 'Amarok V6, alta performance',
       images: ['https://example.com/amarok1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397b'
+      seller: {
+        id: '68d17845a08df9f982e3397b',
+        name: 'Concessionária Teste 2',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste2.com'
+      },
+      isFeatured: false,
+      views: 0
     },
     {
       id: '20',
       brand: 'Mercedes-Benz',
-      model: 'OF-1722',
+      vehicleModel: 'OF-1722',
       year: 2018,
       price: 180000,
       mileage: 80000,
-      fuel: 'diesel',
+      fuelType: 'diesel',
       color: 'Branco',
       transmission: 'manual',
-      category: 'onibus',
-      status: 'ativo',
+      category: 'van',
+      status: 'active',
       description: 'Ônibus Mercedes para transporte urbano',
       images: ['https://example.com/of1722_1.jpg'],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      seller: {
+        id: '68d17845a08df9f982e3397a',
+        name: 'Concessionária Teste',
+        phone: '(11) 99999-9999',
+        email: 'vendas@teste.com'
+      },
+      isFeatured: false,
+      views: 0
     }
   ];
 
@@ -381,9 +605,9 @@ export class MockVehicleService {
       );
     }
 
-    if (filters.model) {
+    if (filters.vehicleModel) {
       filteredVehicles = filteredVehicles.filter(v => 
-        v.model.toLowerCase().includes(filters.model!.toLowerCase())
+        v.vehicleModel.toLowerCase().includes(filters.vehicleModel!.toLowerCase())
       );
     }
 
@@ -403,8 +627,8 @@ export class MockVehicleService {
       filteredVehicles = filteredVehicles.filter(v => v.price <= filters.priceMax!);
     }
 
-    if (filters.fuel) {
-      filteredVehicles = filteredVehicles.filter(v => v.fuel === filters.fuel);
+    if (filters.fuelType) {
+      filteredVehicles = filteredVehicles.filter(v => v.fuelType === filters.fuelType);
     }
 
     if (filters.category) {
@@ -463,10 +687,12 @@ export class MockVehicleService {
     const newVehicle: Vehicle = {
       id: (this.vehicles.length + 1).toString(),
       ...data,
-      status: 'ativo',
+      features: data.features || [],
+      isFeatured: data.isFeatured || false,
+      status: 'active',
+      views: 0,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      sellerId: '68d17845a08df9f982e3397a'
+      updatedAt: new Date().toISOString()
     };
 
     this.vehicles.push(newVehicle);
@@ -497,17 +723,17 @@ export class MockVehicleService {
     this.vehicles.splice(index, 1);
   }
 
-  async updateVehicleStatus(id: string, status: 'ativo' | 'inativo' | 'vendido'): Promise<Vehicle> {
-    return this.updateVehicle(id, { status });
+  async updateVehicleStatus(id: string, status: 'active' | 'inactive' | 'sold'): Promise<Vehicle> {
+    return this.updateVehicle(id, { status: status as 'active' | 'inactive' | 'sold' });
   }
 
   async getDashboardStats(): Promise<DashboardStats> {
     const totalVehicles = this.vehicles.length;
-    const veiculosAtivos = this.vehicles.filter(v => v.status === 'ativo').length;
-    const veiculosVendidos = this.vehicles.filter(v => v.status === 'vendido').length;
+    const veiculosAtivos = this.vehicles.filter(v => v.status === 'active').length;
+    const veiculosVendidos = this.vehicles.filter(v => v.status === 'sold').length;
     const vendasMes = veiculosVendidos; // Simplified
     const receitaMes = this.vehicles
-      .filter(v => v.status === 'vendido')
+      .filter(v => v.status === 'sold')
       .reduce((sum, v) => sum + v.price, 0);
 
     // Top marcas
@@ -547,7 +773,7 @@ export class MockVehicleService {
   async searchVehicles(query: string, filters: Omit<VehicleFilters, 'search'> = {}): Promise<PaginatedResponse<Vehicle>> {
     let filteredVehicles = this.vehicles.filter(v => 
       v.brand.toLowerCase().includes(query.toLowerCase()) ||
-      v.model.toLowerCase().includes(query.toLowerCase()) ||
+      v.vehicleModel.toLowerCase().includes(query.toLowerCase()) ||
       v.description?.toLowerCase().includes(query.toLowerCase())
     );
 

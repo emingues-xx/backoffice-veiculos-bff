@@ -31,7 +31,7 @@ export class VehicleService {
     return apiClient.delete<void>(`${this.basePath}/${id}`);
   }
 
-  async updateVehicleStatus(id: string, status: 'ativo' | 'inativo' | 'vendido'): Promise<Vehicle> {
+  async updateVehicleStatus(id: string, status: 'active' | 'inactive' | 'sold'): Promise<Vehicle> {
     return apiClient.patch<Vehicle>(`${this.basePath}/${id}/status`, { status });
   }
 

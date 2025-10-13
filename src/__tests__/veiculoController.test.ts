@@ -93,16 +93,31 @@ describe('VeiculoController', () => {
     it('should require authentication', async () => {
       const veiculoData = {
         brand: 'Toyota',
-        model: 'Corolla',
+        vehicleModel: 'Corolla',
         year: 2022,
         price: 85000,
         mileage: 0,
-        fuel: 'flex',
+        fuelType: 'gasoline',
         color: 'Branco',
-        transmission: 'automatico',
-        category: 'carro',
-        description: 'Test vehicle',
-        images: ['https://example.com/image.jpg']
+        transmission: 'automatic',
+        doors: 4,
+        category: 'car',
+        condition: 'used',
+        description: 'Veículo em excelente estado, único dono, revisões em dia. Equipado com ar condicionado, direção hidráulica, vidros elétricos e trava elétrica.',
+        images: ['https://example.com/image1.jpg', 'https://example.com/image2.jpg'],
+        features: ['Ar condicionado', 'Direção hidráulica', 'Vidros elétricos', 'Trava elétrica'],
+        location: {
+          city: 'São Paulo',
+          state: 'SP',
+          zipCode: '01234-567'
+        },
+        seller: {
+          id: '68d17845a08df9f982e3397a',
+          name: 'Concessionária Toyota',
+          phone: '(11) 99999-9999',
+          email: 'vendas@toyota.com'
+        },
+        isFeatured: false
       };
 
       await request(app)
@@ -114,16 +129,31 @@ describe('VeiculoController', () => {
     it('should create veiculo with valid token', async () => {
       const veiculoData = {
         brand: 'Toyota',
-        model: 'Corolla',
+        vehicleModel: 'Corolla',
         year: 2022,
         price: 85000,
         mileage: 0,
-        fuel: 'flex',
+        fuelType: 'gasoline',
         color: 'Branco',
-        transmission: 'automatico',
-        category: 'carro',
-        description: 'Test vehicle',
-        images: ['https://example.com/image.jpg']
+        transmission: 'automatic',
+        doors: 4,
+        category: 'car',
+        condition: 'used',
+        description: 'Veículo em excelente estado, único dono, revisões em dia. Equipado com ar condicionado, direção hidráulica, vidros elétricos e trava elétrica.',
+        images: ['https://example.com/image1.jpg', 'https://example.com/image2.jpg'],
+        features: ['Ar condicionado', 'Direção hidráulica', 'Vidros elétricos', 'Trava elétrica'],
+        location: {
+          city: 'São Paulo',
+          state: 'SP',
+          zipCode: '01234-567'
+        },
+        seller: {
+          id: '68d17845a08df9f982e3397a',
+          name: 'Concessionária Toyota',
+          phone: '(11) 99999-9999',
+          email: 'vendas@toyota.com'
+        },
+        isFeatured: false
       };
 
       const response = await request(app)
