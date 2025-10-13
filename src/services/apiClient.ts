@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import https from 'https';
 import { config } from '../config';
 import { createError } from '../middleware/errorHandler';
 
@@ -12,6 +13,8 @@ class ApiClient {
       headers: {
         'Content-Type': 'application/json',
       },
+      // Configurar axios para ignorar certificados SSL
+      httpsAgent: new https.Agent({ rejectUnauthorized: false }),
     });
 
     this.setupInterceptors();
