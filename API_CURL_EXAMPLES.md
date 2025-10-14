@@ -12,6 +12,33 @@
 
 ---
 
+## 🔧 **USANDO O BFF (RECOMENDADO)**
+
+### Por que usar o BFF?
+- **Proxy automático:** Todas as chamadas passam pelo BFF
+- **Autenticação transparente:** Token configurado automaticamente
+- **CORS configurado:** Funciona com qualquer frontend
+- **Validação:** Dados validados antes de enviar para API
+- **Logs centralizados:** Facilita debugging
+
+### Exemplo com BFF
+```bash
+# Em vez de chamar a API diretamente:
+curl -X GET "https://backoffice-veiculos-api-production.up.railway.app/api/vehicles" \
+  -H "Authorization: Bearer TOKEN"
+
+# Use o BFF:
+curl -X GET "https://bff-production-cae3.up.railway.app/api/vehicles" \
+  -H "Authorization: Bearer TOKEN"
+```
+
+### URLs do BFF
+- **Produção:** https://bff-production-cae3.up.railway.app/
+- **Local:** http://localhost:3017/
+- **Documentação:** https://bff-production-cae3.up.railway.app/docs
+
+---
+
 ## 🔐 **AUTENTICAÇÃO**
 
 ### Login
@@ -46,6 +73,11 @@ curl -X POST 'https://backoffice-veiculos-api-production.up.railway.app/api/user
 
 ### 1. Listar Veículos
 ```bash
+# Via BFF (Recomendado)
+curl -X GET 'https://bff-production-cae3.up.railway.app/api/vehicles' \
+  -H 'Authorization: Bearer SEU_TOKEN_AQUI'
+
+# Via API direta
 curl -X GET 'https://backoffice-veiculos-api-production.up.railway.app/api/vehicles' \
   -H 'Authorization: Bearer SEU_TOKEN_AQUI'
 ```
@@ -133,6 +165,11 @@ curl -X DELETE 'https://backoffice-veiculos-api-production.up.railway.app/api/ve
 
 ### 1. Listar Vendas
 ```bash
+# Via BFF (Recomendado) - ⚠️ Use token fresco
+curl -X GET 'https://bff-production-cae3.up.railway.app/api/sales' \
+  -H 'Authorization: Bearer SEU_TOKEN_FRESCO_AQUI'
+
+# Via API direta
 curl -X GET 'https://backoffice-veiculos-api-production.up.railway.app/api/sales' \
   -H 'Authorization: Bearer SEU_TOKEN_AQUI'
 ```
@@ -160,8 +197,9 @@ curl -X GET 'https://backoffice-veiculos-api-production.up.railway.app/api/sales
 
 ### 4. Criar Venda
 ```bash
-curl -X POST 'https://backoffice-veiculos-api-production.up.railway.app/api/sales' \
-  -H 'Authorization: Bearer SEU_TOKEN_AQUI' \
+# Via BFF (Recomendado) - ⚠️ Use token fresco
+curl -X POST 'https://bff-production-cae3.up.railway.app/api/sales' \
+  -H 'Authorization: Bearer SEU_TOKEN_FRESCO_AQUI' \
   -H 'Content-Type: application/json' \
   -d '{
     "vehicleId": "VEHICLE_ID_AQUI",
@@ -176,6 +214,12 @@ curl -X POST 'https://backoffice-veiculos-api-production.up.railway.app/api/sale
     "notes": "Venda de teste",
     "commission": 0
   }'
+
+# Via API direta
+curl -X POST 'https://backoffice-veiculos-api-production.up.railway.app/api/sales' \
+  -H 'Authorization: Bearer SEU_TOKEN_AQUI' \
+  -H 'Content-Type: application/json' \
+  -d '{...mesmo payload...}'
 ```
 
 ### 5. Atualizar Venda
@@ -317,31 +361,32 @@ curl -s -X GET "$BASE_URL/api/sales/stats" \
 echo "🎉 Teste completo realizado com sucesso!"
 ```
 
-### Script PowerShell
+### Script PowerShell (Usando BFF)
 ```powershell
 # Configurações
-$baseUrl = "https://backoffice-veiculos-api-production.up.railway.app"
+$bffUrl = "https://bff-production-cae3.up.railway.app"
+$apiUrl = "https://backoffice-veiculos-api-production.up.railway.app"
 $email = "admin@backoffice.com"
 $password = "Admin123!@#"
 
-Write-Host "🚀 Testando API Backoffice Veículos" -ForegroundColor Green
+Write-Host "Testando API via BFF" -ForegroundColor Green
 
-# 1. Login
-Write-Host "🔐 Fazendo login..." -ForegroundColor Cyan
+# 1. Login (sempre na API direta)
+Write-Host "Fazendo login..." -ForegroundColor Cyan
 $loginData = @{ email = $email; password = $password } | ConvertTo-Json
-$loginResponse = Invoke-RestMethod -Uri "$baseUrl/api/users/login" -Method POST -Body $loginData -ContentType "application/json"
+$loginResponse = Invoke-RestMethod -Uri "$apiUrl/api/users/login" -Method POST -Body $loginData -ContentType "application/json"
 $token = $loginResponse.data.token
-Write-Host "✅ Token obtido: $($token.Substring(0,50))..." -ForegroundColor Green
+Write-Host "Token obtido: $($token.Substring(0,50))..." -ForegroundColor Green
 
-# 2. Listar veículos
-Write-Host "🚗 Listando veículos..." -ForegroundColor Cyan
+# 2. Listar veículos via BFF
+Write-Host "Listando veículos via BFF..." -ForegroundColor Cyan
 $headers = @{"Authorization" = "Bearer $token"}
-$vehicles = Invoke-RestMethod -Uri "$baseUrl/api/vehicles?limit=1" -Method GET -Headers $headers
-$vehicleId = $vehicles.data[0]._id
-Write-Host "✅ Veículo selecionado: $vehicleId" -ForegroundColor Green
+$vehicles = Invoke-RestMethod -Uri "$bffUrl/api/vehicles?limit=1" -Method GET -Headers $headers
+$vehicleId = $vehicles.data.data[0]._id
+Write-Host "Veículo selecionado: $vehicleId" -ForegroundColor Green
 
-# 3. Criar venda
-Write-Host "💰 Criando venda..." -ForegroundColor Cyan
+# 3. Criar venda via BFF (com token fresco)
+Write-Host "Criando venda via BFF..." -ForegroundColor Cyan
 $saleData = @{
   vehicleId = $vehicleId
   buyer = @{
@@ -352,19 +397,19 @@ $saleData = @{
   }
   salePrice = 95000
   paymentMethod = "cash"
-  notes = "Venda de teste via PowerShell"
+  notes = "Venda de teste via BFF"
   commission = 0
 } | ConvertTo-Json -Depth 3
 
-$newSale = Invoke-RestMethod -Uri "$baseUrl/api/sales" -Method POST -Body $saleData -Headers $headers -ContentType "application/json"
-Write-Host "✅ Venda criada com ID: $($newSale.data._id)" -ForegroundColor Green
+$newSale = Invoke-RestMethod -Uri "$bffUrl/api/sales" -Method POST -Body $saleData -Headers $headers -ContentType "application/json"
+Write-Host "Venda criada com ID: $($newSale.data._id)" -ForegroundColor Green
 
-# 4. Estatísticas
-Write-Host "📊 Obtendo estatísticas..." -ForegroundColor Cyan
-$stats = Invoke-RestMethod -Uri "$baseUrl/api/sales/stats" -Method GET -Headers $headers
+# 4. Estatísticas via BFF
+Write-Host "Obtendo estatísticas via BFF..." -ForegroundColor Cyan
+$stats = Invoke-RestMethod -Uri "$bffUrl/api/sales/stats" -Method GET -Headers $headers
 Write-Host "Total de vendas: $($stats.data.totalSales)" -ForegroundColor Yellow
 
-Write-Host "🎉 Teste completo realizado com sucesso!" -ForegroundColor Green
+Write-Host "Teste completo realizado com sucesso!" -ForegroundColor Green
 ```
 
 ---
@@ -375,14 +420,21 @@ Write-Host "🎉 Teste completo realizado com sucesso!" -ForegroundColor Green
 - **Duração:** 4 horas
 - **Formato:** `Bearer TOKEN_AQUI`
 - **Header:** `Authorization: Bearer SEU_TOKEN_AQUI`
+- **⚠️ CRÍTICO:** Sempre obtenha um token fresco antes de operações de vendas
+- **Renovação:** Faça login novamente se receber erro 401
 
 ### Códigos de Status
 - **200:** Sucesso
 - **201:** Criado com sucesso
 - **400:** Erro de validação
-- **401:** Não autorizado (token inválido/expirado)
+- **401:** Não autorizado (token inválido/expirado) - **Obtenha novo token**
 - **404:** Recurso não encontrado
 - **500:** Erro interno do servidor
+
+### ⚠️ **Problemas Comuns e Soluções**
+- **Erro 401:** Token expirado - Faça login novamente
+- **Erro 400 em vendas:** Dados inválidos - Verifique schema
+- **Timeout:** Servidor pode estar sobrecarregado - Tente novamente
 
 ### Filtros Disponíveis
 - **Veículos:** `brand`, `category`, `status`, `year`, `price`, `fuelType`, `transmission`
@@ -402,10 +454,25 @@ Write-Host "🎉 Teste completo realizado com sucesso!" -ForegroundColor Green
 
 - **✅ API funcionando em produção**
 - **✅ CRUD de veículos operacional**
-- **✅ CRUD de vendas operacional**
+- **✅ CRUD de vendas operacional (com token fresco)**
 - **✅ Autenticação JWT funcionando**
 - **✅ Documentação Swagger disponível**
 - **✅ Filtros e paginação funcionando**
 - **✅ Estatísticas disponíveis**
+- **✅ BFF funcionando como proxy**
 
-**🎉 API 100% funcional em produção!**
+## 🔧 **BFF (Backend for Frontend)**
+
+### URLs do BFF
+- **BFF Produção:** https://bff-production-cae3.up.railway.app/
+- **BFF Local:** http://localhost:3017/ (ou porta configurada)
+- **Documentação BFF:** https://bff-production-cae3.up.railway.app/docs
+
+### Funcionalidades do BFF
+- **Proxy para API:** Todas as chamadas passam pelo BFF
+- **Autenticação:** Token JWT configurado automaticamente
+- **CORS:** Configurado para todas as origens
+- **Validação:** Validação de dados antes de enviar para API
+- **Logs:** Logs detalhados de todas as operações
+
+**🎉 API e BFF 100% funcionais em produção!**

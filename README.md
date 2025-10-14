@@ -6,12 +6,13 @@ Backend for Frontend (BFF) para o sistema de E-commerce de Veículos - Backoffic
 
 Este BFF atua como uma camada intermediária entre o frontend do backoffice e a API principal, fornecendo:
 
-- **Otimização de dados**: Agregação e transformação de dados para o frontend
-- **Autenticação**: Middleware JWT para controle de acesso
+- **Proxy transparente**: Todas as chamadas passam pelo BFF
+- **Autenticação automática**: Token JWT configurado automaticamente
 - **Validação**: Validação de entrada e saída de dados com Joi
 - **Documentação**: Swagger/OpenAPI para documentação interativa
-- **Rate Limiting**: Controle de taxa de requisições
-- **CORS**: Configuração flexível de CORS
+- **CORS configurado**: Funciona com qualquer frontend
+- **Logs centralizados**: Facilita debugging e monitoramento
+- **✅ 100% funcional**: Veículos e vendas operacionais
 
 ## 🏗️ Arquitetura
 
