@@ -5,13 +5,19 @@ import { AuthenticatedRequest } from '../middleware/auth';
 import { apiClient } from '../services/apiClient';
 
 export class SaleController {
-  async getSales(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async getSales(req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> {
     try {
       const filters: SaleFilters = {
         ...req.query,
         page: req.query.page ? parseInt(req.query.page as string, 10) : 1,
         limit: req.query.limit ? parseInt(req.query.limit as string, 10) : 10,
       };
+
+      // Configure authentication token for API calls
+      const authHeader = req.headers['authorization'];
+      if (authHeader) {
+        apiClient.setAuthToken(authHeader.split(' ')[1]);
+      }
 
       const result = await saleService.getSales(filters);
       
@@ -24,9 +30,16 @@ export class SaleController {
     }
   }
 
-  async getSaleById(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async getSaleById(req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> {
     try {
       const { id } = req.params;
+      
+      // Configure authentication token for API calls
+      const authHeader = req.headers['authorization'];
+      if (authHeader) {
+        apiClient.setAuthToken(authHeader.split(' ')[1]);
+      }
+      
       const sale = await saleService.getSaleById(id);
       
       res.json({
