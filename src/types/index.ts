@@ -143,3 +143,75 @@ export interface DashboardStats {
   topMarcas: Array<{ marca: string; quantidade: number }>;
   vendasPorMes: Array<{ mes: string; vendas: number; receita: number }>;
 }
+
+// Sales interfaces
+export interface Sale {
+  id: string;
+  vehicleId: string;
+  vehicle?: Vehicle;
+  buyer: {
+    name: string;
+    email: string;
+    phone: string;
+    document: string;
+  };
+  sellerId: string;
+  seller?: {
+    id: string;
+    name: string;
+    email: string;
+  };
+  salePrice: number;
+  commission: number;
+  paymentMethod: 'cash' | 'financing' | 'trade-in';
+  status: 'pending' | 'completed' | 'cancelled';
+  notes?: string;
+  saleDate: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateSaleRequest {
+  vehicleId: string;
+  buyer: {
+    name: string;
+    email: string;
+    phone: string;
+    document: string;
+  };
+  salePrice: number;
+  commission?: number;
+  paymentMethod: 'cash' | 'financing' | 'trade-in';
+  notes?: string;
+}
+
+export interface UpdateSaleRequest {
+  status?: 'pending' | 'completed' | 'cancelled';
+  salePrice?: number;
+  commission?: number;
+  paymentMethod?: 'cash' | 'financing' | 'trade-in';
+  notes?: string;
+}
+
+export interface SaleFilters {
+  status?: 'pending' | 'completed' | 'cancelled';
+  paymentMethod?: 'cash' | 'financing' | 'trade-in';
+  dateFrom?: string;
+  dateTo?: string;
+  sellerId?: string;
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  sortOrder?: 'asc' | 'desc';
+}
+
+export interface SaleStats {
+  totalSales: number;
+  totalRevenue: number;
+  pendingSales: number;
+  completedSales: number;
+  cancelledSales: number;
+  averageSalePrice: number;
+  salesByMonth: Array<{ month: string; sales: number; revenue: number }>;
+  salesByPaymentMethod: Array<{ method: string; count: number; revenue: number }>;
+}

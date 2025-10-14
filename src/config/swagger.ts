@@ -883,6 +883,308 @@ const options: swaggerJsdoc.Options = {
               }
             }
           }
+        },
+        Sale: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'string',
+              description: 'ID único da venda',
+              example: '68ee4b984740ba79c6d9df9c'
+            },
+            vehicleId: {
+              type: 'string',
+              description: 'ID do veículo vendido',
+              example: '68ed79c17fb1e4518e0098b6'
+            },
+            vehicle: {
+              $ref: '#/components/schemas/Vehicle'
+            },
+            buyer: {
+              type: 'object',
+              description: 'Informações do comprador',
+              properties: {
+                name: {
+                  type: 'string',
+                  description: 'Nome do comprador',
+                  example: 'João Silva',
+                  minLength: 2,
+                  maxLength: 100
+                },
+                email: {
+                  type: 'string',
+                  description: 'Email do comprador',
+                  example: 'joao@email.com',
+                  format: 'email'
+                },
+                phone: {
+                  type: 'string',
+                  description: 'Telefone do comprador',
+                  example: '(11) 99999-9999',
+                  pattern: '^\\(\\d{2}\\)\\s\\d{4,5}-?\\d{4}$'
+                },
+                document: {
+                  type: 'string',
+                  description: 'CPF/CNPJ do comprador',
+                  example: '12345678900',
+                  minLength: 11,
+                  maxLength: 14
+                }
+              },
+              required: ['name', 'email', 'phone', 'document']
+            },
+            sellerId: {
+              type: 'string',
+              description: 'ID do vendedor',
+              example: '68ed57a3572e134dd39350ce'
+            },
+            seller: {
+              type: 'object',
+              description: 'Informações do vendedor',
+              properties: {
+                id: {
+                  type: 'string',
+                  description: 'ID do vendedor',
+                  example: '68ed57a3572e134dd39350ce'
+                },
+                name: {
+                  type: 'string',
+                  description: 'Nome do vendedor',
+                  example: 'João Vendedor'
+                },
+                email: {
+                  type: 'string',
+                  description: 'Email do vendedor',
+                  example: 'joao@vendedor.com'
+                }
+              }
+            },
+            salePrice: {
+              type: 'number',
+              description: 'Preço de venda em reais (R$)',
+              example: 50000,
+              minimum: 0
+            },
+            commission: {
+              type: 'number',
+              description: 'Comissão em reais (R$)',
+              example: 2500,
+              minimum: 0
+            },
+            paymentMethod: {
+              type: 'string',
+              enum: ['cash', 'financing', 'trade-in'],
+              description: 'Método de pagamento',
+              example: 'cash'
+            },
+            status: {
+              type: 'string',
+              enum: ['pending', 'completed', 'cancelled'],
+              description: 'Status da venda',
+              example: 'completed'
+            },
+            notes: {
+              type: 'string',
+              description: 'Observações da venda',
+              example: 'Cliente interessado em financiamento',
+              maxLength: 1000
+            },
+            saleDate: {
+              type: 'string',
+              format: 'date-time',
+              description: 'Data da venda',
+              example: '2024-01-15T14:30:00.000Z'
+            },
+            createdAt: {
+              type: 'string',
+              format: 'date-time',
+              description: 'Data de criação',
+              example: '2024-01-15T10:30:00.000Z'
+            },
+            updatedAt: {
+              type: 'string',
+              format: 'date-time',
+              description: 'Data de atualização',
+              example: '2024-01-15T14:30:00.000Z'
+            }
+          },
+          required: ['id', 'vehicleId', 'buyer', 'sellerId', 'salePrice', 'commission', 'paymentMethod', 'status', 'saleDate', 'createdAt', 'updatedAt']
+        },
+        CreateSaleRequest: {
+          type: 'object',
+          properties: {
+            vehicleId: {
+              type: 'string',
+              description: 'ID do veículo a ser vendido',
+              example: '68ed79c17fb1e4518e0098b6'
+            },
+            buyer: {
+              type: 'object',
+              description: 'Informações do comprador',
+              properties: {
+                name: {
+                  type: 'string',
+                  description: 'Nome do comprador',
+                  example: 'João Silva',
+                  minLength: 2,
+                  maxLength: 100
+                },
+                email: {
+                  type: 'string',
+                  description: 'Email do comprador',
+                  example: 'joao@email.com',
+                  format: 'email'
+                },
+                phone: {
+                  type: 'string',
+                  description: 'Telefone do comprador',
+                  example: '(11) 99999-9999',
+                  pattern: '^\\(\\d{2}\\)\\s\\d{4,5}-?\\d{4}$'
+                },
+                document: {
+                  type: 'string',
+                  description: 'CPF/CNPJ do comprador',
+                  example: '12345678900',
+                  minLength: 11,
+                  maxLength: 14
+                }
+              },
+              required: ['name', 'email', 'phone', 'document']
+            },
+            salePrice: {
+              type: 'number',
+              description: 'Preço de venda em reais (R$)',
+              example: 50000,
+              minimum: 0
+            },
+            commission: {
+              type: 'number',
+              description: 'Comissão em reais (R$)',
+              example: 2500,
+              minimum: 0,
+              default: 0
+            },
+            paymentMethod: {
+              type: 'string',
+              enum: ['cash', 'financing', 'trade-in'],
+              description: 'Método de pagamento',
+              example: 'cash'
+            },
+            notes: {
+              type: 'string',
+              description: 'Observações da venda',
+              example: 'Cliente interessado em financiamento',
+              maxLength: 1000
+            }
+          },
+          required: ['vehicleId', 'buyer', 'salePrice', 'paymentMethod']
+        },
+        UpdateSaleRequest: {
+          type: 'object',
+          properties: {
+            status: {
+              type: 'string',
+              enum: ['pending', 'completed', 'cancelled'],
+              description: 'Status da venda'
+            },
+            salePrice: {
+              type: 'number',
+              description: 'Preço de venda em reais (R$)',
+              minimum: 0
+            },
+            commission: {
+              type: 'number',
+              description: 'Comissão em reais (R$)',
+              minimum: 0
+            },
+            paymentMethod: {
+              type: 'string',
+              enum: ['cash', 'financing', 'trade-in'],
+              description: 'Método de pagamento'
+            },
+            notes: {
+              type: 'string',
+              description: 'Observações da venda',
+              maxLength: 1000
+            }
+          }
+        },
+        SaleStats: {
+          type: 'object',
+          properties: {
+            totalSales: {
+              type: 'integer',
+              description: 'Total de vendas',
+              example: 150
+            },
+            totalRevenue: {
+              type: 'number',
+              description: 'Receita total em reais (R$)',
+              example: 7500000
+            },
+            pendingSales: {
+              type: 'integer',
+              description: 'Vendas pendentes',
+              example: 5
+            },
+            completedSales: {
+              type: 'integer',
+              description: 'Vendas concluídas',
+              example: 140
+            },
+            cancelledSales: {
+              type: 'integer',
+              description: 'Vendas canceladas',
+              example: 5
+            },
+            averageSalePrice: {
+              type: 'number',
+              description: 'Preço médio de venda em reais (R$)',
+              example: 50000
+            },
+            salesByMonth: {
+              type: 'array',
+              description: 'Vendas por mês',
+              items: {
+                type: 'object',
+                properties: {
+                  month: {
+                    type: 'string',
+                    example: 'Janeiro'
+                  },
+                  sales: {
+                    type: 'integer',
+                    example: 12
+                  },
+                  revenue: {
+                    type: 'number',
+                    example: 600000
+                  }
+                }
+              }
+            },
+            salesByPaymentMethod: {
+              type: 'array',
+              description: 'Vendas por método de pagamento',
+              items: {
+                type: 'object',
+                properties: {
+                  method: {
+                    type: 'string',
+                    example: 'cash'
+                  },
+                  count: {
+                    type: 'integer',
+                    example: 80
+                  },
+                  revenue: {
+                    type: 'number',
+                    example: 4000000
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
