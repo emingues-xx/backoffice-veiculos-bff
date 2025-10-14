@@ -18,23 +18,23 @@ class SaleService {
     if (filters.sortBy) params.append('sortBy', filters.sortBy);
     if (filters.sortOrder) params.append('sortOrder', filters.sortOrder);
 
-    const response = await apiClient.get(`${this.baseUrl}/api/sales?${params.toString()}`);
-    return response.data;
+    const response = await apiClient.get<PaginatedResponse<Sale>>(`${this.baseUrl}/api/sales?${params.toString()}`);
+    return response;
   }
 
   async getSaleById(id: string): Promise<Sale> {
-    const response = await apiClient.get(`${this.baseUrl}/api/sales/${id}`);
-    return response.data;
+    const response = await apiClient.get<Sale>(`${this.baseUrl}/api/sales/${id}`);
+    return response;
   }
 
   async createSale(saleData: CreateSaleRequest): Promise<Sale> {
-    const response = await apiClient.post(`${this.baseUrl}/api/sales`, saleData);
-    return response.data;
+    const response = await apiClient.post<Sale>(`${this.baseUrl}/api/sales`, saleData);
+    return response;
   }
 
   async updateSale(id: string, updateData: UpdateSaleRequest): Promise<Sale> {
-    const response = await apiClient.put(`${this.baseUrl}/api/sales/${id}`, updateData);
-    return response.data;
+    const response = await apiClient.put<Sale>(`${this.baseUrl}/api/sales/${id}`, updateData);
+    return response;
   }
 
   async deleteSale(id: string): Promise<void> {
@@ -42,8 +42,8 @@ class SaleService {
   }
 
   async getSaleStats(): Promise<SaleStats> {
-    const response = await apiClient.get(`${this.baseUrl}/api/sales/stats`);
-    return response.data;
+    const response = await apiClient.get<SaleStats>(`${this.baseUrl}/api/sales/stats`);
+    return response;
   }
 
   async getSalesBySeller(sellerId: string, filters: Omit<SaleFilters, 'sellerId'>): Promise<PaginatedResponse<Sale>> {
@@ -59,8 +59,8 @@ class SaleService {
     if (filters.sortBy) params.append('sortBy', filters.sortBy);
     if (filters.sortOrder) params.append('sortOrder', filters.sortOrder);
 
-    const response = await apiClient.get(`${this.baseUrl}/api/sales?${params.toString()}`);
-    return response.data;
+    const response = await apiClient.get<PaginatedResponse<Sale>>(`${this.baseUrl}/api/sales?${params.toString()}`);
+    return response;
   }
 }
 

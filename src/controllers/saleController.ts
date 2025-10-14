@@ -127,10 +127,11 @@ export class SaleController {
     try {
       const userId = req.user?.id;
       if (!userId) {
-        return res.status(401).json({
+        res.status(401).json({
           success: false,
           message: 'Usuário não autenticado'
         });
+        return;
       }
 
       const filters: Omit<SaleFilters, 'sellerId'> = {
