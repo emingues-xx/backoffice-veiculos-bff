@@ -215,3 +215,61 @@ export interface SaleStats {
   salesByMonth: Array<{ month: string; sales: number; revenue: number }>;
   salesByPaymentMethod: Array<{ method: string; count: number; revenue: number }>;
 }
+
+// Metrics interfaces
+export interface MetricsFilters {
+  startDate?: string;
+  endDate?: string;
+  period?: 'daily' | 'weekly' | 'monthly' | 'yearly';
+  sellerId?: string;
+}
+
+export interface RevenueMetrics {
+  totalRevenue: number;
+  period: {
+    startDate: string;
+    endDate: string;
+  };
+}
+
+export interface SalesByDay {
+  date: string;
+  count: number;
+  revenue: number;
+}
+
+export interface SalesByDayMetrics {
+  salesByDay: SalesByDay[];
+  period: {
+    startDate: string;
+    endDate: string;
+  };
+}
+
+export interface TopSeller {
+  sellerId: string;
+  sellerName: string;
+  salesCount: number;
+  revenue: number;
+  commission: number;
+}
+
+export interface TopSellersMetrics {
+  topSellers: TopSeller[];
+  period: {
+    startDate: string;
+    endDate: string;
+  };
+}
+
+export interface TotalSalesMetrics {
+  totalSales: number;
+  periodComparison: {
+    salesGrowth: number;
+    previousPeriodSales: number;
+  };
+  period: {
+    startDate: string;
+    endDate: string;
+  };
+}

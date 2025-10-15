@@ -9,6 +9,7 @@ import { swaggerSpec } from './config/swagger';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 import vehicleRoutes from './routes/vehicleRoutes';
 import saleRoutes from './routes/saleRoutes';
+import metricsRoutes from './routes/metricsRoutes';
 import authRoutes from './routes/authRoutes';
 import loginRoutes from './routes/loginRoutes';
 
@@ -115,6 +116,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/login', loginRoutes);
 app.use('/api/vehicles', vehicleRoutes);
 app.use('/api/sales', saleRoutes);
+app.use('/api/metrics', metricsRoutes);
 
 // Root endpoint
 app.get('/', (req, res) => {

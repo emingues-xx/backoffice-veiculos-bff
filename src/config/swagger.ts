@@ -1185,6 +1185,182 @@ const options: swaggerJsdoc.Options = {
               }
             }
           }
+        },
+        RevenueMetrics: {
+          type: 'object',
+          properties: {
+            totalRevenue: {
+              type: 'number',
+              description: 'Receita total em reais (R$)',
+              example: 2426000
+            },
+            period: {
+              type: 'object',
+              properties: {
+                startDate: {
+                  type: 'string',
+                  format: 'date',
+                  description: 'Data de início do período',
+                  example: '2025-10-14'
+                },
+                endDate: {
+                  type: 'string',
+                  format: 'date',
+                  description: 'Data de fim do período',
+                  example: '2025-10-15'
+                }
+              }
+            }
+          }
+        },
+        SalesByDay: {
+          type: 'object',
+          properties: {
+            date: {
+              type: 'string',
+              format: 'date',
+              description: 'Data',
+              example: '2025-10-14'
+            },
+            count: {
+              type: 'integer',
+              description: 'Número de vendas',
+              example: 38
+            },
+            revenue: {
+              type: 'number',
+              description: 'Receita em reais (R$)',
+              example: 2426000
+            }
+          }
+        },
+        SalesByDayMetrics: {
+          type: 'object',
+          properties: {
+            salesByDay: {
+              type: 'array',
+              items: {
+                $ref: '#/components/schemas/SalesByDay'
+              }
+            },
+            period: {
+              type: 'object',
+              properties: {
+                startDate: {
+                  type: 'string',
+                  format: 'date',
+                  description: 'Data de início do período',
+                  example: '2025-10-14'
+                },
+                endDate: {
+                  type: 'string',
+                  format: 'date',
+                  description: 'Data de fim do período',
+                  example: '2025-10-15'
+                }
+              }
+            }
+          }
+        },
+        TopSeller: {
+          type: 'object',
+          properties: {
+            sellerId: {
+              type: 'string',
+              description: 'ID do vendedor',
+              example: '68ed57a3572e134dd39350ce'
+            },
+            sellerName: {
+              type: 'string',
+              description: 'Nome do vendedor',
+              example: 'Administrador'
+            },
+            salesCount: {
+              type: 'integer',
+              description: 'Número de vendas',
+              example: 38
+            },
+            revenue: {
+              type: 'number',
+              description: 'Receita em reais (R$)',
+              example: 2426000
+            },
+            commission: {
+              type: 'number',
+              description: 'Comissão em reais (R$)',
+              example: 121300
+            }
+          }
+        },
+        TopSellersMetrics: {
+          type: 'object',
+          properties: {
+            topSellers: {
+              type: 'array',
+              items: {
+                $ref: '#/components/schemas/TopSeller'
+              }
+            },
+            period: {
+              type: 'object',
+              properties: {
+                startDate: {
+                  type: 'string',
+                  format: 'date',
+                  description: 'Data de início do período',
+                  example: '2025-10-14'
+                },
+                endDate: {
+                  type: 'string',
+                  format: 'date',
+                  description: 'Data de fim do período',
+                  example: '2025-10-15'
+                }
+              }
+            }
+          }
+        },
+        TotalSalesMetrics: {
+          type: 'object',
+          properties: {
+            totalSales: {
+              type: 'integer',
+              description: 'Total de vendas',
+              example: 1
+            },
+            periodComparison: {
+              type: 'object',
+              properties: {
+                salesGrowth: {
+                  type: 'number',
+                  description: 'Crescimento de vendas (%)',
+                  example: 0
+                },
+                previousPeriodSales: {
+                  type: 'integer',
+                  description: 'Vendas do período anterior',
+                  example: 0
+                }
+              }
+            },
+            period: {
+              type: 'object',
+              properties: {
+                startDate: {
+                  type: 'string',
+                  format: 'date',
+                  description: 'Data de início do período',
+                  example: '2025-10-14'
+                },
+                endDate: {
+                  type: 'string',
+                  format: 'date',
+                  description: 'Data de fim do período',
+                  example: '2025-10-15'
+                }
+              }
+            }
+          }
         }
       }
     },
